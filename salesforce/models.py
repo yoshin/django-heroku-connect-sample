@@ -13,3 +13,8 @@ class User(hc_models.HerokuConnectModel):
 
     def __str__(self):
         return self.username
+
+class UserComment(models.Model):
+    user = models.ForeignKey(User, to_field='sf_id',
+                             on_delete=models.SET_NULL, null=True)
+    comment = models.TextField()
